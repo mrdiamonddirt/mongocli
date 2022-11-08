@@ -7,7 +7,7 @@ async function connect() {
     try {
         await client.connect();
         const db = client.db('MongoCLI');
-        return break.collection('Movie');
+        return db.collection('Movie');
 
     } catch (error) {
         console.log(error)
