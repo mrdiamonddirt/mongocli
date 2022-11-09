@@ -16,12 +16,19 @@ async function app(yargsObject) {
         const results = await movieCollection.find({}).toArray();
         console.table(results)
         // code to read movie document
-    } else if (yargsObject.update) {
+    } else if (yargsObject.updateActor) {
         console.log('entering Update functionality')
         // code to update record
         const updateMovie = await movieCollection.findOneAndUpdate({title: yargsObject.title}, {$set:{actor: yargsObject.actor}}, {new: true})
         console.log(updateMovie)
-        console.log('Movie Updated')
+        console.log('Actor Updated')
+        // await updateMovie.replace()
+    } else if (yargsObject.updateDirector) {
+        console.log('entering Update functionality')
+        // code to update record
+        const updateMovie = await movieCollection.findOneAndUpdate({title: yargsObject.title}, {$set:{director: yargsObject.director}}, {new: true})
+        console.log(updateMovie)
+        console.log('Director Updated')
         // await updateMovie.replace()
     } else if (yargsObject.delete) {
         console.log('entering Delete functionality')
