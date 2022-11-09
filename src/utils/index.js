@@ -6,10 +6,19 @@ class Movie {
         this.director = director;
     };
     async add(movieCollection) {
-        console.log('Entering add withing index.js')
+        console.log('Entering add within index.js')
         // code to log a film to the database
         await movieCollection.insertOne(this)
     };
+    // async update() {
+    //     console.log('Entering update within index.js')
+    //     // code to update film in database
+    //     // await movieCollection.findOneAndReplace()
+    // };
+    async delete(movieCollection) {
+        console.log('Entering delete within index.js')
+        await movieCollection.deleteOne(this)
+    }
 
 };
 

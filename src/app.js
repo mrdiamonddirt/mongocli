@@ -1,3 +1,4 @@
+const { ConnectionClosedEvent } = require("mongodb");
 const yargs = require("yargs");
 const {client, connect} = require('./db/connections');
 const Movie = require('./utils/index')
@@ -18,9 +19,20 @@ async function app(yargsObject) {
     } else if (yargsObject.update) {
         console.log('entering Update functionality')
         // code to update record
+        const updateMovie = await movieCollection.findOneAndUpdate({title: yargsObject.title}, {$set:{actor: yargsObject.actor}}, {new: true})
+        console.log(updateMovie)
+        console.log('Movie Updated')
+        // await updateMovie.replace()
     } else if (yargsObject.delete) {
         console.log('entering Delete functionality')
         // code to delete movie
+        const query = {title: yargsObject.title};
+        const result = await movieCollection.deleteOne(query);
+        if (result.deletedCount === 1) {
+            console.log('deleted')
+        } else {
+            console.log('error')
+        }
     } else {
         console.log('command not recognised')
     };
