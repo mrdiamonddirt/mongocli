@@ -25,10 +25,14 @@ async function app(yargsObject) {
         // await updateMovie.replace()
     } else if (yargsObject.updateDirector) {
         console.log('entering Update functionality')
-        //search and update function in mongodb tutors solution
-        // const searchObj = new Movie(yargsObject.title, yargsObject.actor)
+        //search and update function in mongodb tutors solution 1
+        // const searchObj = new Movie(yargsObject.title, yargsObject.actor, yargsObject.director)
         // const updateObj = {actor: yargsObject.newActor}
         // await searchObj.update(movieCollection, updateObj)
+
+        //search and update function in mongodb tutors solution 2
+        // await movieCollection.updateOne({title: yargsObject.title}, {$set:{actor: yargsObject.actor}})
+
         // code to update record
         const updateMovie = await movieCollection.findOneAndUpdate({title: yargsObject.title}, {$set:{director: yargsObject.director}}, {new: true})
         console.log(updateMovie)
