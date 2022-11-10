@@ -10,15 +10,16 @@ class Movie {
         // code to log a film to the database
         await movieCollection.insertOne(this)
     };
-    // async update() {
+    // async update(movieCollection) {
     //     console.log('Entering update within index.js')
     //     // code to update film in database
-    //     // await movieCollection.findOneAndReplace()
+    //     await movieCollection.updateOne(this, {$set: {updateObj}})
     // };
-    async delete(movieCollection) {
-        console.log('Entering delete within index.js')
-        await movieCollection.deleteOne(this)
-    }
+    
+    // async delete(movieCollection) {
+    //     console.log('Entering delete within index.js')
+    //     await movieCollection.deleteOne(this)
+    // }
 
 };
 
