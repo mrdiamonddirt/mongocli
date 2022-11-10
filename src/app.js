@@ -40,6 +40,11 @@ async function app(yargsObject) {
         // await updateMovie.replace()
     } else if (yargsObject.delete) {
         console.log('entering Delete functionality')
+        // tutors solution option 1
+        // const deleteObj = new Movie(yargsObject.title, yargsObject.actor, yargsObject.director)
+        // await deleteObj.delete(movieCollection)
+        
+
         // code to delete movie
         const query = {title: yargsObject.title};
         const result = await movieCollection.deleteOne(query);
