@@ -33,7 +33,7 @@ async function app(yargsObject) {
         //search and update function in mongodb tutors solution 2
         // await movieCollection.updateOne({title: yargsObject.title}, {$set:{actor: yargsObject.actor}})
 
-        // code to update record
+        // code to update record my solution
         const updateMovie = await movieCollection.findOneAndUpdate({title: yargsObject.title}, {$set:{director: yargsObject.director}}, {new: true})
         console.log(updateMovie)
         console.log('Director Updated')
@@ -43,9 +43,11 @@ async function app(yargsObject) {
         // tutors solution option 1
         // const deleteObj = new Movie(yargsObject.title, yargsObject.actor, yargsObject.director)
         // await deleteObj.delete(movieCollection)
-        
 
-        // code to delete movie
+        // tutors solution option 2
+        // await movieCollection.deleteOne({title: yargsObject.title})
+        
+        // code to delete movie my solution
         const query = {title: yargsObject.title};
         const result = await movieCollection.deleteOne(query);
         if (result.deletedCount === 1) {
